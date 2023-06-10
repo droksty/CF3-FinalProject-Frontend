@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReservationsService } from '../reservations.service';
+import { Reservation } from '../app.interfaces';
 
 @Component({
   selector: 'app-welcome',
@@ -10,8 +12,7 @@ import { Router } from '@angular/router';
 export class WelcomeComponent {
   
   searchForm: FormGroup;
-  
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(private router: Router, private fb: FormBuilder, private service: ReservationsService) {
     this.searchForm = this.fb.group({
       reference: ['', Validators.required]
     })

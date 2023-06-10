@@ -1,1 +1,54 @@
-<p>form-view works!</p>
+<div *ngIf="reservation">
+  <form >
+    <div class="row">
+      <div class="col-xs-6">
+        <label for="id" class="h2 me-4 mb-2 mt-4 form-label">Reservation ID:</label>
+        <input class="w-50" id="id" value="{{reservation.id}}" readonly>
+      </div>
+    </div>
+    <hr>
+    <!-- Row #1 -->
+    <div class="row">
+      <div class="col-sm-2 mb-3">
+        <label for="reservationDate" class="form-label">Reservation Date</label>
+        <input type="date" class="form-control" id="reservationDate" value="{{reservation.reservationDate}}"/>
+      </div>
+      <div class="col-sm-3 mb-3">
+        <label for="reference" class="form-label">Reference</label>
+        <input type="text" class="form-control" id="reference" value="{{reservation.reference}}"/>
+      </div>
+      <div class="col-sm-3 mb-3">
+        <label for="guestName" class="form-label">Guest Name</label>
+        <input type="text" class="form-control" id="guestName" value="{{reservation.guestName}}"/>
+      </div>
+    </div>
+    <!-- Row #2 -->
+    <div class="row">
+      <div class="col-sm-2 mb-3">
+        <label for="roomType" class="form-label">Room Type</label>
+        <select class="form-select" class="form-control" id="roomType" value="{{reservation.roomType}}">
+          <option value="DOUBLE_ROOM">Double Room</option>
+          <option value="TRIPLE_ROOM">Triple Room</option>
+          <option value="JUNIOR_SUITE">Junior Suite</option>
+        </select>
+      </div>
+      <div class="col-sm-2 mb-3">
+        <label for="checkIn" class="form-label">Check-in</label>
+        <input type="date" class="form-control" id="checkIn" value="{{reservation.checkIn}}"/>
+      </div>
+      <div class="col-sm-2 mb-3">
+        <label for="checkOut" class="form-label">Check-Out</label>
+        <input type="date" class="form-control" id="checkOut" value="{{reservation.checkOut}}"/>
+      </div>
+      <div class="col-sm-2 mb-3">
+        <label for="totalPrice" class="form-label">Total Price</label>
+        <input type="number" class="form-control" id="totalPrice" value="{{reservation.totalPrice}}" placeholder="Total Price"/>
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-success me-3" >Update</button>
+    <a class="btn btn-primary px-4" routerLink="" role="button">Back</a>
+  </form>
+</div>
+
+
