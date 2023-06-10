@@ -8,12 +8,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormInsertComponent } from './form-insert/form-insert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormViewComponent } from './form-view/form-view.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'insert-form', component: FormInsertComponent },
-  // { path: 'res-form', component: ResFormComponent },
-  // { path: 'res-form/:reference', component: ResFormComponent },
+  { path: 'form-view', component: FormViewComponent },
+  { path: 'form-view/:reference', component: FormViewComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -22,7 +23,8 @@ const routes: Routes = [
     AppComponent,
     WelcomeComponent,
     PageNotFoundComponent,
-    FormInsertComponent
+    FormInsertComponent,
+    FormViewComponent
   ],
   imports: [
     BrowserModule,

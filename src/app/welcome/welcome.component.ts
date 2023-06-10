@@ -20,7 +20,7 @@ export class WelcomeComponent {
   findOneByReference() {
     if (this.searchForm.valid) {
       // console.log(this.searchForm.value.reference)
-      this.router.navigate(['/res-form/' + this.searchForm.value.reference])
+      this.router.navigate(['/form-view/' + this.searchForm.value.reference])
     } else {
       console.log("not valid")
     }
