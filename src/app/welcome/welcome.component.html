@@ -1,6 +1,21 @@
-<form class="form-inline" [formGroup]="searchForm" (ngSubmit)="findOneByReference()">
-  <div class="input-group">
-    <input type="text" class="form-control" id="reference" placeholder="Search by Reference" formControlName="reference"/>
-    <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Search</button>
-  </div>
-</form>
+<div>
+  <h2 class="mb-4 mt-4">Find Reservation</h2>
+  <hr>
+  <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="findOneByReference()">
+    <div class="input-group">
+      <input type="text" class="form-control" id="reference" placeholder="Search by Reference" formControlName="reference"/>
+      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">Search</button>
+    </div>
+  </form>
+</div>
+<!-- <div>
+  <h2 class="mb-4 mt-4">Find Reservations</h2>
+  <hr>
+  <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="findManyByGuestName()">
+    <div class="input-group">
+      <input type="text" class="form-control" id="guestName" placeholder="Search by Guest Name" formControlName="guestName"/>
+      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">Search</button>
+    </div>
+  </form>
+</div> -->
+

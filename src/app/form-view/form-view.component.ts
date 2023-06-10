@@ -16,16 +16,14 @@ export class FormViewComponent {
   reference: string = ''
 
   constructor(private fb: FormBuilder, private router: ActivatedRoute, private service: ReservationsService) {
+  
   }
 
   ngOnInit(): void {
     this.router.params.subscribe(x => this.reference = x['reference'])
-    this.service.findReservation(this.reference).subscribe( (xx) => {
-      this.reservation = xx;
+    this.service.findReservation(this.reference).subscribe( (dataFromAPI) => {
+      this.reservation = dataFromAPI;
       console.log(this.reservation)
     })
   }
-
-  isObject(value: any): boolean { return typeof value === 'object'; }
-
 }

@@ -28,4 +28,8 @@ export class WelcomeComponent {
     
     // this.searchForm.reset();
   }
+
+  findManyByGuestName() {
+    console.log("not impl yet")
+  }
 }
