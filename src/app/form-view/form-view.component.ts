@@ -11,8 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormViewComponent {
 
-  reservation: any
-  viewForm: any
+  reservation!: Reservation
+  viewForm!: FormGroup;
   reference: string = ''
 
   constructor(private fb: FormBuilder, private router: ActivatedRoute, private service: ReservationsService) {
@@ -25,5 +25,23 @@ export class FormViewComponent {
       this.reservation = dataFromAPI;
       console.log(this.reservation)
     })
+  }
+
+  updateReservation() {
+    console.log("click")
+    console.log(this.reservation)
+    this.service.updateReservation(this.reservation).subscribe((response) => {
+      console.log(response);
+      console.log('updated');
+    })
+  }
+
+  deleteReservation() {
+    console.log("Deleting")
+    console.log(this.reservation)
+    // this.service.deleteReservation(this.reservation.id).subscribe((response) => {
+    //   console.log(response)
+    //   console.log('deleted');
+    // })
   }
 }
