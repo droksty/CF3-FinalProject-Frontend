@@ -39,9 +39,9 @@ export class FormViewComponent {
   deleteReservation() {
     console.log("Deleting")
     console.log(this.reservation)
-    // this.service.deleteReservation(this.reservation.id).subscribe((response) => {
-    //   console.log(response)
-    //   console.log('deleted');
-    // })
+    this.service.deleteReservation(this.reservation.id).subscribe((response) => {
+      console.log(response)
+      console.log('deleted');
+    })
   }
 }

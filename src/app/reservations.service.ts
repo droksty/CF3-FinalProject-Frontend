@@ -22,7 +22,7 @@ export class ReservationsService {
   }
 
   deleteReservation(id: string) {
-    return this.http.delete(`${RESERVATIONS_API}/${id}`)
+    return this.http.delete(`${RESERVATIONS_API}/${id}`, {responseType: "text"})
   }
 
   findReservation(reference: string) {
