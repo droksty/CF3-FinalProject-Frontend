@@ -8,3 +8,13 @@ export interface Reservation {
   roomType: string;
   totalPrice: number;
 }
+
+export function datesToString(reservation: Reservation) {
+  reservation.reservationDate = reservation.reservationDate.toString();
+  reservation.checkIn = reservation.checkIn.toString();
+  reservation.checkOut = reservation.checkOut.toString();
+  if (reservation.checkOut < reservation.checkIn) {
+    console.log("Fix this.")
+  }
+  return reservation;
+}
