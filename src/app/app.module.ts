@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FormInsertComponent } from './form-insert/form-insert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormViewComponent } from './form-view/form-view.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
     WelcomeComponent,
     PageNotFoundComponent,
     FormInsertComponent,
-    FormViewComponent
+    FormViewComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

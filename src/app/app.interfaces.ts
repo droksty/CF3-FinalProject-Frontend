@@ -18,3 +18,8 @@ export function datesToString(reservation: Reservation) {
   }
   return reservation;
 }
+
+export interface MenuItem {
+  text: string;
+  link: string;
+}
