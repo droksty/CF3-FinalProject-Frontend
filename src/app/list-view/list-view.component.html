@@ -1,5 +1,7 @@
-<h3>Reservation List</h3>
+<h2 class="mb-4 mt-4">Reservation List</h2>
+<hr>
 <div *ngIf="reservationList.length">
+  <!-- The List <table> -->
   <table class="table table-striped">
     <thead>
       <th scope="col">Reference</th>
@@ -34,7 +36,15 @@
           {{ reservation.totalPrice }}
         </td>
       </tr>
-    <td> {{ leTotal }}</td>  
+      <!-- Total Sales -->
+      <tr>
+        <td colspan=7></td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+        <td><strong>Total Sales:</strong></td>
+        <td><strong>{{ leTotal }}</strong></td>
+      </tr>
     </tbody>
   </table>
 </div>
