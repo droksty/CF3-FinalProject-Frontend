@@ -23,3 +23,7 @@ export interface MenuItem {
   text: string;
   link: string;
 }
+
+export interface ReservationList {
+  dataFromAPI: Reservation[];
+}

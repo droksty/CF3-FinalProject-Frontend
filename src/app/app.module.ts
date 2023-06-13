@@ -10,12 +10,14 @@ import { FormInsertComponent } from './form-insert/form-insert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormViewComponent } from './form-view/form-view.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { ListViewComponent } from './list-view/list-view.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'insert-form', component: FormInsertComponent },
   { path: 'form-view', component: FormViewComponent },
   { path: 'form-view/:reference', component: FormViewComponent },
+  { path: 'reservations', component: ListViewComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -26,7 +28,8 @@ const routes: Routes = [
     PageNotFoundComponent,
     FormInsertComponent,
     FormViewComponent,
-    DropdownComponent
+    DropdownComponent,
+    ListViewComponent
   ],
   imports: [
     BrowserModule,

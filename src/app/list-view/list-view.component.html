@@ -1,0 +1,40 @@
+<h3>Reservation List</h3>
+<div *ngIf="reservationList.length">
+  <table class="table table-striped">
+    <thead>
+      <th scope="col">Reference</th>
+      <th scope="col">Booked On</th>
+      <th scope="col">Name</th>
+      <th scope="col">Check In</th>
+      <th scope="col">Check Out</th>
+      <th scope="col">Room Type</th>
+      <th scope="col">Total Price</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservationList">
+        <td>
+          {{ reservation.reference }}
+        </td>
+        <td>
+          {{ reservation.reservationDate }}
+        </td>
+        <td>
+          {{ reservation.guestName }}
+        </td>
+        <td>
+          {{ reservation.checkIn }}
+        </td>
+        <td>
+          {{ reservation.checkOut }}
+        </td>
+        <td>
+          {{ reservation.roomType }}
+        </td>
+        <td>
+          {{ reservation.totalPrice }}
+        </td>
+      </tr>
+    <td> {{ leTotal }}</td>  
+    </tbody>
+  </table>
+</div>

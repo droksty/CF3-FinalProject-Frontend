@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Reservation } from './app.interfaces';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Reservation, ReservationList } from './app.interfaces';
 
 
 const RESERVATIONS_API = 'http://localhost:8080/api/reservations'
@@ -32,4 +32,8 @@ export class ReservationsService {
   // findReservationByGuestName(guestName: string) {
   //   return this.http.get<ReservationList>(`${this.RESERVATIONS_API}/${guestName}`)
   // }
+
+  findAll() {
+    return this.http.get<ReservationList>(`${RESERVATIONS_API}/?guestName=`)
+  }
 }
