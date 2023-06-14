@@ -13,17 +13,16 @@ export class ListViewComponent {
   leTotal = 0;
 
   ngOnInit(): void {
-    console.log('Starting API call')
     this.service.findAll().subscribe({
       next: (data) => {
         this.reservationList = Object.assign(data)
-        console.log(this.reservationList)
         for (let res of this.reservationList) {
           this.leTotal += res.totalPrice;
         }
       },
-      error: (error) => { console.log(error) },
-      complete: () => { console.log('API call completed') }
+      error: (error) => { 
+        console.log(error) 
+      }
     });
   }
 }

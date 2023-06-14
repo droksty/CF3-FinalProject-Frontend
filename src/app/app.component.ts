@@ -11,11 +11,11 @@ export class AppComponent {
   title = 'finalproject-frontend';
 
   moreQueries: MenuItem[] = [
-    { text: 'Search by Guest Name', link: 'not-implemented-yet'},
-    { text: 'Search between check in dates', link: 'not-implemented-yet'},
+    { text: 'Search by guest name', link: 'not-implemented-yet'},
+    { text: 'Search between checkin dates', link: 'not-implemented-yet'},
     { text: 'Search by date booked', link: 'not-implemented-yet'},
-    { text: 'Search by check in date', link: 'not-implemented-yet'},
-    { text: 'Search by check out date', link: 'not-implemented-yet'},
+    { text: 'Search by checkin date', link: 'not-implemented-yet'},
+    { text: 'Search by checkout date', link: 'not-implemented-yet'},
     { text: 'Search by room type', link: 'not-implemented-yet'}
   ];
 

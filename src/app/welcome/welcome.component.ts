@@ -24,8 +24,4 @@ export class WelcomeComponent {
       this.uiService.newAlert({ type: 'warning', heading: 'Alert: ', text: 'Reference cannot be empty' });
     }
   }
-
-  // findManyByGuestName() {
-  //   console.log("not impl yet")
-  // }
 }

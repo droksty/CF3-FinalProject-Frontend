@@ -10,7 +10,7 @@ const RESERVATIONS_API = 'http://localhost:8080/api/reservations'
 })
 export class ReservationsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
 
   insertReservation(reservation: Reservation) {
@@ -28,10 +28,6 @@ export class ReservationsService {
   findReservation(reference: string) {
     return this.http.get<Reservation>(`${RESERVATIONS_API}/${reference}`)
   }
-
-  // findReservationByGuestName(guestName: string) {
-  //   return this.http.get<ReservationList>(`${this.RESERVATIONS_API}/${guestName}`)
-  // }
 
   findAll() {
     return this.http.get<ReservationList>(`${RESERVATIONS_API}/?guestName=`)

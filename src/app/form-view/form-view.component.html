@@ -1,6 +1,7 @@
 <div *ngIf="!reservation">
   <h2 class="mb-4 mt-4">Not Found</h2>
 </div>
+
 <div *ngIf="reservation">
   <form (ngSubmit)="updateReservation()">
     <div class="row">

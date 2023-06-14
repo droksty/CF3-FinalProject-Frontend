@@ -14,7 +14,7 @@ export class FormInsertComponent {
 
   insertForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private alertService: UiService, private service: ReservationsService) {
+  constructor(private fb: FormBuilder, private uiService: UiService, private service: ReservationsService) {
     this.insertForm = this.fb.group({
       reference: ['', [Validators.required, Validators.minLength(10)]],
       reservationDate: ['', Validators.required],
@@ -26,19 +26,26 @@ export class FormInsertComponent {
     })
   }
 
+  
   insertReservation(): void {
     if (this.insertForm.valid) {
       const reservation = this.insertForm.value as Reservation;
 
       this.service.insertReservation(datesToString(reservation)).subscribe({
-        next: response => {
-          console.log(response)
-          this.alertService.newAlert({ type: 'success', heading: 'Success: ', text: 'Reservation inserted!' })
+        next: () => {
+          this.uiService.newAlert({ 
+            type: 'success', 
+            heading: 'Success: ', 
+            text: 'Reservation inserted!' 
+          })
         },
         error: error => {
           let errorMsg = Object.entries<APIError>(error)[7][1].message
-          console.log(errorMsg)
-          this.alertService.newAlert({ type: 'danger', heading: 'Error: ', text: `${errorMsg}` })
+          this.uiService.newAlert({ 
+            type: 'danger', 
+            heading: 'Error: ', 
+            text: `${errorMsg}` 
+          })
         }
       })
     } else {
