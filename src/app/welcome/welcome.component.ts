@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ReservationsService } from '../reservations.service';
-import { Reservation } from '../app.interfaces';
+import { UiService } from '../ui.service';
 
 @Component({
   selector: 'app-welcome',
@@ -12,7 +11,7 @@ import { Reservation } from '../app.interfaces';
 export class WelcomeComponent {
   
   searchForm: FormGroup;
-  constructor(private router: Router, private fb: FormBuilder, private service: ReservationsService) {
+  constructor(private router: Router, private fb: FormBuilder, private uiService: UiService) {
     this.searchForm = this.fb.group({
       reference: ['', Validators.required]
     })
@@ -20,16 +19,13 @@ export class WelcomeComponent {
 
   findOneByReference() {
     if (this.searchForm.valid) {
-      // console.log(this.searchForm.value.reference)
       this.router.navigate(['/form-view/' + this.searchForm.value.reference])
     } else {
-      console.log("not valid")
+      this.uiService.newAlert({ type: 'warning', heading: 'Alert: ', text: 'Reference cannot be empty' });
     }
-    
-    // this.searchForm.reset();
   }
 
-  findManyByGuestName() {
-    console.log("not impl yet")
-  }
+  // findManyByGuestName() {
+  //   console.log("not impl yet")
+  // }
 }

@@ -14,9 +14,13 @@ export function datesToString(reservation: Reservation) {
   reservation.checkIn = reservation.checkIn.toString();
   reservation.checkOut = reservation.checkOut.toString();
   if (reservation.checkOut < reservation.checkIn) {
-    console.log("Fix this.")
+    console.log("CheckOut cannot be BEFORE CheckIn. Fix this.")
   }
   return reservation;
+}
+
+export interface ReservationList {
+  dataFromAPI: Reservation[];
 }
 
 export interface MenuItem {
@@ -24,6 +28,12 @@ export interface MenuItem {
   link: string;
 }
 
-export interface ReservationList {
-  dataFromAPI: Reservation[];
+export interface Alert {
+  type?: 'primary' | 'info' | 'success' | 'danger' | 'warning';
+  heading?: string;
+  text: string;
+}
+
+export interface APIError {
+  message: string
 }

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReservationsService } from '../reservations.service';
-import { Reservation } from '../app.interfaces';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { APIError, Reservation } from '../app.interfaces';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { UiService } from '../ui.service';
 
 @Component({
   selector: 'app-form-view',
@@ -15,7 +16,7 @@ export class FormViewComponent {
   viewForm!: FormGroup;
   reference: string = ''
 
-  constructor(private fb: FormBuilder, private router: ActivatedRoute, private service: ReservationsService) {
+  constructor(private fb: FormBuilder, private alertService: UiService, private router: ActivatedRoute, private service: ReservationsService) {
   
   }
 
@@ -28,20 +29,37 @@ export class FormViewComponent {
   }
 
   updateReservation() {
-    console.log("click")
-    console.log(this.reservation)
-    this.service.updateReservation(this.reservation).subscribe((response) => {
-      console.log(response);
-      console.log('updated');
+    // console.log(this.reservation)
+    this.service.updateReservation(this.reservation).subscribe({
+      next: data => {
+        console.log(data);
+        this.alertService.newAlert({ type: 'success', heading: 'Success: ', text: 'Reservation updated!' })
+      },
+      error: error => {
+        let errorMessage = Object.entries<APIError>(error)[7][1].message;
+        this.alertService.newAlert({ type: 'danger', heading: 'Error: ', text: `${errorMessage}` })
+      }
     })
   }
 
   deleteReservation() {
-    console.log("Deleting")
-    console.log(this.reservation)
-    this.service.deleteReservation(this.reservation.id).subscribe((response) => {
-      console.log(response)
-      console.log('deleted');
+    // console.log(this.reservation)
+    this.service.deleteReservation(this.reservation.id).subscribe({
+      next: response => {
+        console.log(response);
+        this.alertService.newAlert({ type: 'success', heading: 'Success: ', text: 'Reservation deleted!' })
+      },
+      error: error => {
+        let str = Object.entries<string>(error)[7][1]
+        console.log(str);
+        console.log(typeof str);
+        let sttrrr = str.slice(12, str.length-2)
+        
+        
+        
+        // let errorMessage = Object.entries<APIError>(error)[7][1].message;
+        this.alertService.newAlert({ type: 'danger', heading: 'Error: ', text: `${sttrrr}` })
+      }
     })
   }
 }

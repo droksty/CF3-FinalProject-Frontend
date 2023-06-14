@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormViewComponent } from './form-view/form-view.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ListViewComponent } from './list-view/list-view.component';
+import { AlertComponent } from './alert/alert.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
     FormInsertComponent,
     FormViewComponent,
     DropdownComponent,
-    ListViewComponent
+    ListViewComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

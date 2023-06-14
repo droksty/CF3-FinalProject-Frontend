@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Reservation, datesToString } from '../app.interfaces';
+import { APIError, Reservation, datesToString } from '../app.interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationsService } from '../reservations.service';
+import { UiService } from '../ui.service';
+
 
 @Component({
   selector: 'app-form-insert',
@@ -12,7 +14,7 @@ export class FormInsertComponent {
 
   insertForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: ReservationsService) {
+  constructor(private fb: FormBuilder, private alertService: UiService, private service: ReservationsService) {
     this.insertForm = this.fb.group({
       reference: ['', [Validators.required, Validators.minLength(10)]],
       reservationDate: ['', Validators.required],
@@ -27,13 +29,18 @@ export class FormInsertComponent {
   insertReservation(): void {
     if (this.insertForm.valid) {
       const reservation = this.insertForm.value as Reservation;
-      // console.log(reservation)
-      
-      this.service.insertReservation(datesToString(reservation)).subscribe((response) => {
-        console.log(response)
-        console.log("inserted")
-      });
-      this.insertForm.reset();
+
+      this.service.insertReservation(datesToString(reservation)).subscribe({
+        next: response => {
+          console.log(response)
+          this.alertService.newAlert({ type: 'success', heading: 'Success: ', text: 'Reservation inserted!' })
+        },
+        error: error => {
+          let errorMsg = Object.entries<APIError>(error)[7][1].message
+          console.log(errorMsg)
+          this.alertService.newAlert({ type: 'danger', heading: 'Error: ', text: `${errorMsg}` })
+        }
+      })
     } else {
       console.log('Form not valid');
     }

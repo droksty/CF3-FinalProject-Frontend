@@ -1,31 +1,28 @@
 <div class="container bg-light">
   <div class="row">
     <nav class="p-2 navbar navbar-expand navbar-light bg-dark justify-content-between">
+
       <!-- Brand/Home -->
       <span class="navbar-brand">
         <strong>
           <a routerLink="" class="text-decoration-none text-white">{{ title }}</a>
         </strong>
       </span>
+
       <!-- Insert Form -->
       <span>
         <strong>
           <a routerLink="/insert-form" class="text-decoration-none text-white">Insert New</a>
         </strong>
       </span>
-      <!-- Find by Reference -->
-      <!-- <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-        <div class="input-group">
-          <input type="text" class="form-control" id="reference" placeholder="Search by Reference" formControlName="reference"/>
-          <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Search</button>
-        </div>
-      </form> -->
-      <!-- List by GuestName -->
+
+      <!-- Reservation List -->
       <span>
         <strong>
           <a routerLink='reservations' class="text-decoration-none text-white">Reservations List</a>
         </strong>
       </span>
+      
       <!-- More Queries -->
       <ul class="navbar-nav">
         <app-dropdown 
@@ -39,4 +36,6 @@
   <div class="row mt-2">
     <router-outlet></router-outlet>
   </div>
+  <br>
+  <app-alert *ngFor="let alert of alerts" [type]="alert.type ?? 'info'" [heading]="alert.heading" [text]="alert.text"></app-alert>
 </div>
