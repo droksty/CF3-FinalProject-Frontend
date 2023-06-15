@@ -12,6 +12,7 @@ import { FormViewComponent } from './form-view/form-view.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { AlertComponent } from './alert/alert.component';
+import { ListFilterComponent } from './list-filter/list-filter.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'form-view', component: FormViewComponent },
   { path: 'form-view/:reference', component: FormViewComponent },
   { path: 'reservations', component: ListViewComponent },
+  { path: 'reservations/guestName', component: ListFilterComponent },
+  { path: 'reservations/checkinBetween', component: ListFilterComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -31,7 +34,8 @@ const routes: Routes = [
     FormViewComponent,
     DropdownComponent,
     ListViewComponent,
-    AlertComponent
+    AlertComponent,
+    ListFilterComponent
   ],
   imports: [
     BrowserModule,

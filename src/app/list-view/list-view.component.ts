@@ -10,14 +10,14 @@ import { Reservation, ReservationList, datesToString } from '../app.interfaces';
 export class ListViewComponent {
   constructor(private service: ReservationsService) {}
   reservationList: Reservation[] = [];
-  leTotal = 0;
+  totalSales = 0;
 
   ngOnInit(): void {
     this.service.findAll().subscribe({
       next: (data) => {
         this.reservationList = Object.assign(data)
         for (let res of this.reservationList) {
-          this.leTotal += res.totalPrice;
+          this.totalSales += res.totalPrice;
         }
       },
       error: (error) => { 
