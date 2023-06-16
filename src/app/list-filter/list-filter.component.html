@@ -1,29 +1,29 @@
-<div *ngIf="filter == '/reservations/guestName'">
+<div *ngIf="queryType == '/reservations/guestName'">
   <h2 class="mb-4 mt-4" >Search by Guest Name</h2>
   <hr>
-  <form class="form-inline">
+  <form [formGroup]="guestNameFilter" (ngSubmit)="filterByGuestName()" class="form-inline">
     <div class="input-group">
-      <input type="text" class="form-control" id="guestName" placeholder="Search by Guestname"/>
-      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">Search</button>
+      <input type="text" class="form-control" id="guestName" placeholder="Search by Guestname" formControlName="guestName"/>
+      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" [disabled]="!guestNameFilter.valid">Search</button>
     </div>
   </form>
 </div>
 
-<div *ngIf="filter == '/reservations/checkinBetween'">
+<div *ngIf="queryType == '/reservations/checkinBetween'">
   <h2 class="mb-4 mt-4" >Search by Check-in between</h2>
   <hr>
-  <form action="">
+  <form [formGroup]="datesBetweenFilter" (ngSubmit)="filterByDatesBetween()">
     <div class="row">
       <div class="col-sm-2 mb-3">
         <label for="checkInFrom">From</label>
-        <input type="date" class="form-control" id="checkInFrom"/>
+        <input type="date" class="form-control" id="checkInFrom" formControlName="checkInFrom"/>
       </div>
       <div class="col-sm-2 mb-3">
         <label for="checkInTo">To</label>
-        <input type="date" class="form-control" id="checkInTo"/>
+        <input type="date" class="form-control" formControlName="checkInTo"/>
       </div>
       <div class="col-sm-2 mb-3 d-flex align-items-end">
-        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">Search</button>
+        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" [disabled]="!datesBetweenFilter.valid">Search</button>
       </div>
     </div>
   </form>

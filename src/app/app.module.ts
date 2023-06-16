@@ -20,6 +20,12 @@ const routes: Routes = [
   { path: 'form-view', component: FormViewComponent },
   { path: 'form-view/:reference', component: FormViewComponent },
   { path: 'reservations', component: ListViewComponent },
+  { path: 'reservations/filterByGuestName', component: ListViewComponent },
+  { path: 'reservations/filterByDatesBetween', component: ListViewComponent },
+
+
+
+
   { path: 'reservations/guestName', component: ListFilterComponent },
   { path: 'reservations/checkinBetween', component: ListFilterComponent },
   { path: '**', component: PageNotFoundComponent }

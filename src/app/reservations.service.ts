@@ -32,4 +32,12 @@ export class ReservationsService {
   findAll() {
     return this.http.get<ReservationList>(`${RESERVATIONS_API}/?guestName=`)
   }
+
+  findAllByGuestName(guestName: string) {
+    return this.http.get<ReservationList>(`${RESERVATIONS_API}/?guestName=${guestName}`)
+  }
+
+  findAllByDatesBetween(checkInFrom: string, checkInTo: string) {
+    return this.http.get<ReservationList>(`${RESERVATIONS_API}/filter/datesBetween?dateFrom=${checkInFrom}&dateTo=${checkInTo}`)
+  }
 }
