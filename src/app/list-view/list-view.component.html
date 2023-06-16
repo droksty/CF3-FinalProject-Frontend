@@ -1,6 +1,11 @@
-<h2 class="mb-4 mt-4">Reservation List</h2>
-<hr>
+<!-- If no Reservation were found matching the search criteria -->
+<div *ngIf="reservationList.length == 0">
+  <h2 class="mb-4 mt-4">Not Found</h2>
+</div>
+
 <div *ngIf="reservationList.length">
+  <h2 class="mb-4 mt-4">Reservation List</h2>
+  <hr>
   <!-- The List <table> -->
   <table class="table table-striped">
     <thead>
