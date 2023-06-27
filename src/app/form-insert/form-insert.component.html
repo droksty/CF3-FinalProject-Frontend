@@ -4,22 +4,41 @@
   <!-- Row #1 -->
   <div class="row">
     <div class="col-sm-2 mb-3">
-      <label for="reservationDate" class="form-label">Reservation Date</label>
+      <label for="reservationDate" class="form-label">Reservation Date
+        <span class="text-danger" *ngIf="insertForm.get('reservationDate')?.errors?.['required']">
+            *
+        </span>
+      </label>
       <input type="date" class="form-control" id="reservationDate" formControlName="reservationDate"/>
     </div>
     <div class="col-sm-3 mb-3">
-      <label for="reference" class="form-label">Reference</label>
+      <label for="reference" class="form-label">Reference
+        <span 
+          class="text-danger" 
+          *ngIf="insertForm.get('reference')?.errors?.['required'] || insertForm.get('reference')?.errors?.['minlength']"
+        >
+          *
+        </span>
+      </label>
       <input type="text" class="form-control" id="reference" formControlName="reference"/>
     </div>
     <div class="col-sm-3 mb-3">
-      <label for="guestName" class="form-label">Guest Name</label>
+      <label for="guestName" class="form-label">Guest Name
+        <span class="text-danger" *ngIf="insertForm.get('guestName')?.errors?.['required']">
+          *
+        </span>
+      </label>
       <input type="text" class="form-control" id="guestName" formControlName="guestName" />
     </div>
   </div>
   <!-- Row #2 -->
   <div class="row">
     <div class="col-sm-2 mb-3">
-      <label for="roomType" class="form-label">Room Type</label>
+      <label for="roomType" class="form-label">Room Type
+        <span class="text-danger" *ngIf="insertForm.get('roomType')?.errors?.['required']">
+          *
+      </span>
+      </label>
       <select class="form-select" class="form-control" id="roomType" formControlName="roomType">
         <option value="DOUBLE_ROOM">Double Room</option>
         <option value="TRIPLE_ROOM">Triple Room</option>
@@ -27,18 +46,32 @@
       </select>
     </div>
     <div class="col-sm-2 mb-3">
-      <label for="checkIn" class="form-label">Check-in</label>
+      <label for="checkIn" class="form-label">Check-in
+        <span class="text-danger" *ngIf="insertForm.get('checkIn')?.errors?.['required']">
+          *
+      </span>
+      </label>
       <input type="date" class="form-control" id="checkIn" formControlName="checkIn"/>
     </div>
     <div class="col-sm-2 mb-3">
-      <label for="checkOut" class="form-label">Check-Out</label>
+      <label for="checkOut" class="form-label">Check-Out
+        <span class="text-danger" *ngIf="insertForm.get('checkOut')?.errors?.['required']">
+          *
+      </span>
+      </label>
       <input type="date" class="form-control" id="checkOut" formControlName="checkOut"/>
     </div>
     <div class="col-sm-2 mb-3">
-      <label for="totalPrice" class="form-label">Total Price</label>
+      <label for="totalPrice" class="form-label">Total Price
+        <span class="text-danger" *ngIf="insertForm.get('totalPrice')?.errors?.['required']">
+          *
+      </span>
+      </label>
       <input type="number" class="form-control" id="totalPrice" formControlName="totalPrice" placeholder="Total Price"/>
     </div>
   </div>
-  <button type="submit" class="btn btn-success me-3" [disabled]="!insertForm.valid">Submit</button>
+  <button type="submit" class="btn btn-success me-3">Submit</button>
   <a class="btn btn-primary px-4" routerLink="" role="button">Back</a>
 </form>
+
+<!-- [disabled]="!insertForm.valid" -->

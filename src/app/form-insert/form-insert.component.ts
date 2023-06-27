@@ -50,6 +50,11 @@ export class FormInsertComponent {
       })
     } else {
       console.log('Form not valid');
+      this.uiService.newAlert({ 
+        type: 'danger', 
+        heading: 'Error: ', 
+        text: `Invalid form data. Please fill all fields appropriately.` 
+      })
     }
   }
 }
