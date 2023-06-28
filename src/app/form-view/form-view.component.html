@@ -3,7 +3,7 @@
 </div>
 
 <div *ngIf="reservation">
-  <form (ngSubmit)="updateReservation()">
+  <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && updateReservation()">
     <div class="row">
       <div class="col-xs-6">
         <label for="id" class="h2 me-4 mb-2 mt-4 form-label">Reservation ID:</label>
@@ -13,40 +13,119 @@
     <hr>
     <!-- Row #1 -->
     <div class="row">
-      <div class="col-sm-2 mb-3">
-        <label for="reservationDate" class="form-label">Reservation Date</label>
-        <input type="date" class="form-control" name="reservationDate" id="reservationDate" [(ngModel)]="reservation.reservationDate"/>
+      <div class="col-sm-2 mb-3"> <!-- Reservation Date -->
+        <label for="reservationDate" class="form-label">Reservation Date
+          <span class="text-danger" *ngIf="reservationDate.invalid && f.submitted">**</span>
+        </label>
+        <input 
+          type="date" 
+          [(ngModel)]="reservation.reservationDate"
+          [ngClass]="{'invalid-data': reservationDate.invalid && f.submitted, 'valid-data': reservationDate.valid && f.submitted}"
+          required
+          name="reservationDate"
+          #reservationDate="ngModel"
+          class="form-control" 
+          id="reservationDate" 
+        />
       </div>
-      <div class="col-sm-3 mb-3">
-        <label for="reference" class="form-label">Reference</label>
-        <input type="text" class="form-control" name="reference" id="reference" [(ngModel)]="reservation.reference"/>
+      <div class="col-sm-3 mb-3"> <!-- Reference -->
+        <label for="reference" class="form-label">Reference
+          <span class="text-danger" *ngIf="reference.invalid && f.submitted">**</span>
+        </label>
+        <input 
+          type="text" 
+          [(ngModel)]="reservation.reference" 
+          [ngClass]="{'invalid-data': reference.invalid && f.submitted, 'valid-data': reference.valid && f.submitted}" 
+          required
+          minlength="10"
+          name="reference" 
+          #reference="ngModel" 
+          class="form-control" 
+          id="reference" 
+        />
       </div>
-      <div class="col-sm-3 mb-3">
-        <label for="guestName" class="form-label">Guest Name</label>
-        <input type="text" class="form-control" name="guestName" id="guestName" [(ngModel)]="reservation.guestName"/>
+      <div class="col-sm-3 mb-3"> <!-- Guest Name -->
+        <label for="guestName" class="form-label">Guest Name
+          <span class="text-danger" *ngIf="guestName.invalid && f.submitted">**</span>
+        </label>
+        <input 
+          type="text" 
+          [(ngModel)]="reservation.guestName"
+          [ngClass]="{'invalid-data': guestName.invalid && f.submitted, 'valid-data': guestName.valid && f.submitted}"
+          required
+          name="guestName"
+          #guestName="ngModel" 
+          class="form-control" 
+          id="guestName" 
+        />
       </div>
     </div>
     <!-- Row #2 -->
     <div class="row">
-      <div class="col-sm-2 mb-3">
-        <label for="roomType" class="form-label">Room Type</label>
-        <select class="form-select" class="form-control" name="roomType" id="roomType" [(ngModel)]="reservation.roomType">
+      <div class="col-sm-2 mb-3"> <!-- Room Type -->
+        <label for="roomType" class="form-label">Room Type
+          <span class="text-danger" *ngIf="roomType.invalid && f.submitted">**</span>
+        </label>
+        <select 
+          class="form-select form-control" 
+          [(ngModel)]="reservation.roomType"
+          [ngClass]="{'invalid-data': roomType.invalid && f.submitted, 'valid-data': roomType.valid && f.submitted}"
+          required
+          name="roomType" 
+          #roomType="ngModel"
+          id="roomType" 
+        >
           <option value="DOUBLE_ROOM">Double Room</option>
           <option value="TRIPLE_ROOM">Triple Room</option>
           <option value="JUNIOR_SUITE">Junior Suite</option>
         </select>
       </div>
-      <div class="col-sm-2 mb-3">
-        <label for="checkIn" class="form-label">Check-in</label>
-        <input type="date" class="form-control" name="checkIn" id="checkIn" [(ngModel)]="reservation.checkIn"/>
+      <div class="col-sm-2 mb-3"> <!-- Check-in -->
+        <label for="checkIn" class="form-label">Check-in
+          <span class="text-danger" *ngIf="checkIn.invalid && f.submitted">**</span>
+        </label>
+        <input 
+          type="date" 
+          [(ngModel)]="reservation.checkIn"
+          [ngClass]="{'invalid-data': checkIn.invalid && f.submitted, 'valid-data': checkIn.valid && f.submitted}"
+          required
+          name="checkIn"
+          #checkIn="ngModel"
+          class="form-control" 
+          id="checkIn" 
+        />
       </div>
-      <div class="col-sm-2 mb-3">
-        <label for="checkOut" class="form-label">Check-Out</label>
-        <input type="date" class="form-control" name="checkOut" id="checkOut" [(ngModel)]="reservation.checkOut"/>
+      <div class="col-sm-2 mb-3"> <!-- Check-out -->
+        <label for="checkOut" class="form-label">Check-Out
+          <span class="text-danger" *ngIf="checkOut.invalid && f.submitted">**</span>
+        </label>
+        <input 
+          type="date" 
+          [(ngModel)]="reservation.checkOut"
+          [ngClass]="{'invalid-data': checkOut.invalid && f.submitted, 'valid-data': checkOut.valid && f.submitted}"
+          required
+          name="checkOut" 
+          #checkOut="ngModel"
+          class="form-control" 
+          id="checkOut" 
+        />
       </div>
-      <div class="col-sm-2 mb-3">
-        <label for="totalPrice" class="form-label">Total Price</label>
-        <input type="number" class="form-control" name="totalPrice" id="totalPrice" [(ngModel)]="reservation.totalPrice" placeholder="Total Price"/>
+      <div class="col-sm-2 mb-3"> <!-- Total Price -->
+        <label for="totalPrice" class="form-label">Total Price
+          <span class="text-danger" *ngIf="totalPrice.invalid && f.submitted">**</span>
+        </label>
+        <input 
+          type="number" 
+          [(ngModel)]="reservation.totalPrice"
+          [ngClass]="{'invalid-data': totalPrice.invalid && f.submitted, 'valid-data': totalPrice.valid && f.submitted}"
+          required
+          min="0"
+          name="totalPrice" 
+          #totalPrice="ngModel"
+          class="form-control" 
+          id="totalPrice" 
+          placeholder="Total Price"
+        />
       </div>
     </div>
     
@@ -55,8 +134,3 @@
     <a class="btn btn-danger px-4" (click)="deleteReservation()" role="button">Delete</a>
   </form>
 </div>
-
-
-
-
-

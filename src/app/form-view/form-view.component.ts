@@ -12,7 +12,16 @@ import { UiService } from '../ui.service';
 })
 export class FormViewComponent {
 
-  reservation!: Reservation
+  reservation: Reservation = {
+    id: '',
+    reference: '',
+    reservationDate: '',
+    guestName: '',
+    checkIn: '',
+    checkOut: '',
+    roomType: '',
+    totalPrice: 0
+  }
   viewForm!: FormGroup;
   reference: string = ''
 
