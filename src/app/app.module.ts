@@ -22,8 +22,14 @@ const routes: Routes = [
   { path: 'reservations', component: ListViewComponent },
   { path: 'reservations/filterByGuestName', component: ListViewComponent },
   { path: 'reservations/filterByDatesBetween', component: ListViewComponent },
+  { path: 'reservations/filterByCheckIn', component: ListViewComponent },
+  { path: 'reservations/filterByCheckOut', component: ListViewComponent },
+  { path: 'reservations/filterByRoomType', component: ListViewComponent },
   { path: 'reservations/guestName', component: ListFilterComponent },
   { path: 'reservations/checkinBetween', component: ListFilterComponent },
+  { path: 'reservations/checkIn', component: ListFilterComponent },
+  { path: 'reservations/checkOut', component: ListFilterComponent },
+  { path: 'reservations/roomType', component: ListFilterComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

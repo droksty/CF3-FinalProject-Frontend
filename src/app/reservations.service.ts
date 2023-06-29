@@ -40,4 +40,16 @@ export class ReservationsService {
   findAllByDatesBetween(checkInFrom: string, checkInTo: string) {
     return this.http.get<ReservationList>(`${RESERVATIONS_API}/filter/datesBetween?dateFrom=${checkInFrom}&dateTo=${checkInTo}`)
   }
+
+  findAllByCheckIn(checkIn: string) {
+    return this.http.get<ReservationList>(`${RESERVATIONS_API}/filter/checkIn?checkIn=${checkIn}`)
+  }
+
+  findAllByCheckOut(checkOut: string) {
+    return this.http.get<ReservationList>(`${RESERVATIONS_API}/filter/checkOut?checkOut=${checkOut}`)
+  }
+
+  findAllByRoomType(roomType: string) {
+    return this.http.get<ReservationList>(`${RESERVATIONS_API}/filter/roomType?roomType=${roomType}`)
+  }
 }

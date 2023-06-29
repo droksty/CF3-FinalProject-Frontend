@@ -29,3 +29,47 @@
   </form>
 </div>
 
+<div *ngIf="queryType == '/reservations/checkIn' || queryType == '/reservations/checkOut'">
+  <h2 class="mb-4 mt-4" *ngIf="queryType == '/reservations/checkIn'">Search by Check-in</h2>
+  <h2 class="mb-4 mt-4" *ngIf="queryType == '/reservations/checkOut'">Search by Check-out</h2>
+  <hr>
+  <form *ngIf="queryType == '/reservations/checkIn'" [formGroup]="checkInFilter" (ngSubmit)="filterByCheckIn()">
+    <div class="row">
+      <div class="col-sm-2 mb-3">
+        <label for="checkIn">Check-In Date</label>
+        <input type="date" class="form-control" formControlName="checkIn"/>
+      </div>
+      <div class="col-sm-2 mb-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" [disabled]="!checkInFilter.valid">Search</button>
+      </div>
+    </div>
+  </form>
+  <form *ngIf="queryType == '/reservations/checkOut'" [formGroup]="checkOutFilter" (ngSubmit)="filterByCheckOut()">
+    <div class="row">
+      <div class="col-sm-2 mb-3">
+        <label for="checkOut">Check-Out Date</label>
+        <input type="date" class="form-control" formControlName="checkOut"/>
+      </div>
+      <div class="col-sm-2 mb-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" [disabled]="!checkOutFilter.valid">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="queryType == '/reservations/roomType'">
+  <h2 class="mb-4 mt-4" >Search by Room Type</h2>
+  <hr>
+  <form [formGroup]="roomTypeFilter" (ngSubmit)="filterByRoomType()" class="form-inline">
+    <div class="input-group">
+      <select class="form-select" class="form-control" id="roomType" formControlName="roomType">
+        <option value="DOUBLE_ROOM">Double Room</option>
+        <option value="TRIPLE_ROOM">Triple Room</option>
+        <option value="JUNIOR_SUITE">Junior Suite</option>
+      </select>
+      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" [disabled]="!roomTypeFilter.valid">Search</button>
+    </div>
+  </form>
+</div>
+
+

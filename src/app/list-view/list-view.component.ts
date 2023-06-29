@@ -15,6 +15,10 @@ export class ListViewComponent {
   guestName = '';
   checkInFrom = '';
   checkInTo = '';
+  checkIn = '';
+  checkOut = '';
+  roomType = '';
+
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ReservationsService) { }
 
@@ -25,6 +29,12 @@ export class ListViewComponent {
       this.findByGuestName();
     } else if (this.listFilter.includes("Between")) {
       this.findByDatesBetween();
+    } else if (this.listFilter.includes("CheckIn")) {
+      this.findByCheckIn();
+    } else if (this.listFilter.includes("CheckOut")) {
+      this.findByCheckOut();
+    } else if (this.listFilter.includes("roomType")) {
+      this.findByRoomType();
     } else {
       this.findAll();
     }
@@ -51,6 +61,36 @@ export class ListViewComponent {
       this.checkInTo = x['checkInTo'];
     })
     this.service.findAllByDatesBetween(this.checkInFrom, this.checkInTo).subscribe({
+      next: (data) => this.generateList(data),
+      error: (error) => console.log(error) 
+    })
+  }
+
+  findByCheckIn() {
+    this.activatedRoute.queryParams.subscribe(x => {
+      this.checkIn = x['checkIn'];
+    })
+    this.service.findAllByCheckIn(this.checkIn).subscribe({
+      next: (data) => this.generateList(data),
+      error: (error) => console.log(error) 
+    })
+  }
+
+  findByCheckOut() {
+    this.activatedRoute.queryParams.subscribe(x => {
+      this.checkOut = x['checkOut'];
+    })
+    this.service.findAllByCheckOut(this.checkOut).subscribe({
+      next: (data) => this.generateList(data),
+      error: (error) => console.log(error) 
+    })
+  }
+
+  findByRoomType() {
+    this.activatedRoute.queryParams.subscribe(x => {
+      this.roomType = x['roomType'];
+    })
+    this.service.findAllByRoomType(this.roomType).subscribe({
       next: (data) => this.generateList(data),
       error: (error) => console.log(error) 
     })
