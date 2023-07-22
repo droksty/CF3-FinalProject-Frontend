@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Reservation, ReservationList } from './app.interfaces';
 
 
-const RESERVATIONS_API = 'http://localhost:8080/api/reservations'
+const RESERVATIONS_API = 'https://cf3-final-project.onrender.com/api/reservations'
 
 @Injectable({
   providedIn: 'root'
